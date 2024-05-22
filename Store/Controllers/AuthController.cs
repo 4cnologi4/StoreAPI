@@ -11,12 +11,10 @@ namespace Web.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
         private readonly IClienteHandler _clienteHandler;
 
-        public AuthController(IConfiguration configuration, IClienteHandler clienteHandler)
+        public AuthController(IClienteHandler clienteHandler)
         {
-            _configuration = configuration;
             _clienteHandler = clienteHandler;
         }
 
@@ -30,27 +28,6 @@ namespace Web.Controllers
             }
 
             return Ok(new { Token = token });
-        }
-
-        private string GenerateJwtToken(string username)
-        {
-            var claims = new[]
-            {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 
