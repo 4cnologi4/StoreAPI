@@ -9,6 +9,7 @@ namespace Infrastructure.Interfaces
 {
     public interface IClienteRepository
     {
+        public Task<Cliente> GetClienteByCredentialsAsync(string nombre, string password);
         public List<Cliente> GetClientes();
         public Cliente GetClienteById(int id);
         public int AddCliente(Cliente cliente);

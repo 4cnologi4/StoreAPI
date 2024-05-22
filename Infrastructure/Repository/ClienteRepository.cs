@@ -18,6 +18,20 @@ namespace Infrastructure.Repository
             _context = context;
         }
 
+        public async Task<Cliente> GetClienteByCredentialsAsync(string nombre, string password)
+        {
+            try
+            {
+                return await _context.Clientes
+                    .FirstOrDefaultAsync(c => c.Nombre == nombre && c.Password == password);
+            }
+            catch (Exception ex)
+            {
+                // Log error
+                return null;
+            }
+        }
+
         public List<Cliente> GetClientes()
         {
             try

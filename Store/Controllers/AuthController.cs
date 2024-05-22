@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Handlers.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,22 +12,24 @@ namespace Web.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IClienteHandler _clienteHandler;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, IClienteHandler clienteHandler)
         {
             _configuration = configuration;
+            _clienteHandler = clienteHandler;
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] UserLogin userLogin)
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticateRequest request)
         {
-            if (userLogin.Username == "test" && userLogin.Password == "password")
+            var token = await _clienteHandler.AuthenticateAsync(request.Nombre, request.Password);
+            if (token == null)
             {
-                var token = GenerateJwtToken(userLogin.Username);
-                return Ok(new { Token = token });
+                return Unauthorized();
             }
 
-            return Unauthorized();
+            return Ok(new { Token = token });
         }
 
         private string GenerateJwtToken(string username)
@@ -51,9 +54,9 @@ namespace Web.Controllers
         }
     }
 
-    public class UserLogin
+    public class AuthenticateRequest
     {
-        public string Username { get; set; }
+        public string Nombre { get; set; }
         public string Password { get; set; }
     }
 }

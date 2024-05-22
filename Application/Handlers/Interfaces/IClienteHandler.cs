@@ -10,6 +10,7 @@ namespace Application.Handlers.Interfaces
 {
     public interface IClienteHandler
     {
+        public Task<string> AuthenticateAsync(string nombre, string password);
         public List<ClienteDto> GetClientes();
         public ClienteDto GetClienteById(int id);
         public int AddCliente(ClienteRequest request);
