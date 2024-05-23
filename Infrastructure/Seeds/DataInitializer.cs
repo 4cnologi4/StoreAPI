@@ -13,8 +13,8 @@ namespace Infrastructure.Seeds
         public static void Initialize(StoreDbContext context)
         {
             context.Clientes.AddRange(
-            new Cliente { ClienteId = 1, Nombre = "Juan", Apellidos = "Perez", Direccion = "Calle Falsa 123", Password = "password123" },
-            new Cliente { ClienteId = 2, Nombre = "Ana", Apellidos = "Garcia", Direccion = "Calle Verdadera 456", Password = "password456" }
+            new Cliente { ClienteId = 1, Nombre = "Juan", Apellidos = "Perez", Direccion = "Calle Falsa 123", Password = "123" },
+            new Cliente { ClienteId = 2, Nombre = "Ana", Apellidos = "Garcia", Direccion = "Calle Verdadera 456", Password = "456" }
             // Agregar más datos de ejemplo aquí
         );
 
