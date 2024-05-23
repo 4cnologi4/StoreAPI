@@ -82,8 +82,10 @@ builder.Services.AddAuthorization();
 // Registro de servicios
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
+builder.Services.AddScoped<ITiendaRepository, TiendaRepository>();
 builder.Services.AddScoped<IClienteHandler, ClienteHandler>();
 builder.Services.AddScoped<IArticuloHandler, ArticuloHandler>();
+builder.Services.AddScoped<ITiendaHandler, TiendaHandler>();
 
 var app = builder.Build();
 
