@@ -35,7 +35,7 @@ namespace Web.Controllers
             var result = _tiendaHandler.UpdateTienda(id, request);
             if (result)
             {
-                return Ok("Tienda actualizada correctamente.");
+                return Ok(new { message = "Tienda actualizada correctamente." });
             }
             return NotFound("Tienda no encontrada.");
         }
@@ -46,7 +46,7 @@ namespace Web.Controllers
             var result = _tiendaHandler.DeleteTienda(id);
             if (result)
             {
-                return Ok("Tienda eliminada correctamente.");
+                return Ok(new { message = "Tienda eliminada correctamente." });
             }
             return NotFound("Tienda no encontrada.");
         }

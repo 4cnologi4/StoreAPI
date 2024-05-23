@@ -37,7 +37,7 @@ namespace Web.Controllers
             var result = _articuloHandler.UpdateArticulo(id, request);
             if (result)
             {
-                return Ok("Artículo actualizado correctamente.");
+                return Ok(new { message = "Artículo actualizado correctamente." });
             }
             return NotFound("Artículo no encontrado.");
         }
@@ -48,7 +48,7 @@ namespace Web.Controllers
             var result = _articuloHandler.DeleteArticulo(id);
             if (result)
             {
-                return Ok("Artículo eliminado correctamente.");
+                return Ok(new { message = "Artículo eliminado correctamente." });
             }
             return NotFound("Artículo no encontrado.");
         }
