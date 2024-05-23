@@ -21,6 +21,16 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
+
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -111,7 +121,8 @@ else
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
+// Aplicar la política de CORS
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication(); // Necesario para JWT
 app.UseAuthorization();
 
