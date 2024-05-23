@@ -29,7 +29,7 @@ namespace Web.Controllers
             return BadRequest("Error al agregar la tienda.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult UpdateTienda(int id, TiendaRequest request)
         {
             var result = _tiendaHandler.UpdateTienda(id, request);

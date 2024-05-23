@@ -79,6 +79,7 @@ namespace Infrastructure.Repository
                 if (existingCliente != null)
                 {
                     existingCliente.Nombre = cliente.Nombre;
+                    existingCliente.Password = cliente.Password;
                     existingCliente.Apellidos = cliente.Apellidos;
                     existingCliente.Direccion = cliente.Direccion;
 

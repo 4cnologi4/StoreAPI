@@ -79,6 +79,7 @@ namespace Application.Handlers
             var cliente = new Cliente
             {
                 Nombre = request.Nombre,
+                Password = request.Password,
                 Apellidos = request.Apellidos,
                 Direccion = request.Direccion
             };
@@ -90,6 +91,7 @@ namespace Application.Handlers
             var cliente = new Cliente
             {
                 Nombre = request.Nombre,
+                Password = request.Password,
                 Apellidos = request.Apellidos,
                 Direccion = request.Direccion
             };

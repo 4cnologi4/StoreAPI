@@ -51,13 +51,13 @@ namespace Web.Controllers
             return BadRequest("Error al agregar el cliente.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult UpdateCliente(int id, ClienteRequest request)
         {
             var result = _clienteHandler.UpdateCliente(id, request);
             if (result)
             {
-                return Ok("Cliente actualizado correctamente.");
+                return Ok(new { message = "Cliente actualizado correctamente." });
             }
             return NotFound("Cliente no encontrado.");
         }
@@ -68,10 +68,10 @@ namespace Web.Controllers
             var result = _clienteHandler.DeleteCliente(id);
             if (result)
             {
-                return Ok("Cliente eliminado correctamente.");
+                return Ok(new { message = "Cliente eliminado correctamente." });
             }
             return NotFound("Cliente no encontrado.");
-        }       
+        }
 
     }
 }

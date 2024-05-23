@@ -31,7 +31,7 @@ namespace Web.Controllers
             return BadRequest("Error al agregar el artículo.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult UpdateArticulo(int id, [FromBody] ArticuloRequest request)
         {
             var result = _articuloHandler.UpdateArticulo(id, request);
