@@ -9,8 +9,9 @@ namespace Application.DTO
 {
     public class ClienteDto
     {
-        public int ClienteId { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
+        public string Password { get; set; }
         public string Apellidos { get; set; }
         public string Direccion { get; set; }
         public List<ClienteArticuloDto> Articulos { get; set; }
@@ -19,8 +20,9 @@ namespace Application.DTO
 
         public ClienteDto(Cliente cliente)
         {
-            ClienteId = cliente.ClienteId;
+            Id = cliente.ClienteId;
             Nombre = cliente.Nombre;
+            Password = cliente.Password;
             Apellidos = cliente.Apellidos;
             Direccion = cliente.Direccion;
             Articulos = cliente.ClienteArticulo.Select(ca => new ClienteArticuloDto(ca)).ToList();

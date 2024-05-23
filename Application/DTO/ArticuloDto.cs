@@ -9,7 +9,7 @@ namespace Application.DTO
 {
     public class ArticuloDto
     {
-        public int ArticuloId { get; set; }
+        public int Id { get; set; }
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
@@ -22,7 +22,7 @@ namespace Application.DTO
 
         public ArticuloDto(Articulo articulo)
         {
-            ArticuloId = articulo.ArticuloId;
+            Id = articulo.ArticuloId;
             Codigo = articulo.Codigo;
             Descripcion = articulo.Descripcion;
             Precio = articulo.Precio;

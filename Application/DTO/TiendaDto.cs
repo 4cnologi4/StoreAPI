@@ -9,7 +9,7 @@ namespace Application.DTO
 {
     public class TiendaDto
     {
-        public int TiendaId { get; set; }
+        public int Id { get; set; }
         public string? Sucursal { get; set; }
         public string? Direccion { get; set; }
 
@@ -17,7 +17,7 @@ namespace Application.DTO
 
         public TiendaDto(Tienda tienda)
         {
-            TiendaId = tienda.TiendaId;
+            Id = tienda.TiendaId;
             Sucursal = tienda.Sucursal;
             Direccion = tienda.Direccion;
         }
